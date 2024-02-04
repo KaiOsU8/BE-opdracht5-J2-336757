@@ -18,6 +18,7 @@
                     <th class="border-solid border-2 border-sky-400">VerpakkingsEenheid</th>
                     <th class="border-solid border-2 border-sky-400">AantalAanwezig</th>
                     <th class="border-solid border-2 border-sky-400">AllergenenInfo</th>
+                    <th class="border-solid border-2 border-sky-400">LeveringsInformatie</th>
                 </tr>
                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $__currentLoopData = $product->magazijn; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $magazijn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -28,6 +29,9 @@
                             <td class="border-solid border-2 border-sky-400"><?php echo e($magazijn->AantalAanwezig); ?></td>
                             <td class="border-solid border-2 border-sky-400">
                                 <a href="<?php echo e(route('product.show', $product)); ?>"><i class="fa-solid fa-x text-red-600"></i></a>
+                            </td>
+                            <td class="border-solid border-2 border-sky-400">
+                                <a href="<?php echo e(route('product.levering', $product)); ?>"><i class="fa-solid text-blue-500 fa-question"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

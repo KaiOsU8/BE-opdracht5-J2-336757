@@ -16,6 +16,6 @@
             </tr>
         @endforeach
     </table>
-    <a href="{{ route('magazijn.index') }}" class="mt-5 bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded">Terug naar Producten</a>
+    <a href="{{ route('product.index') }}" class="mt-5 bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded">Terug naar Producten</a>
 </div>
 </x-app-layout>

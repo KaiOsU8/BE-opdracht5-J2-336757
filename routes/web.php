@@ -21,5 +21,6 @@ Route::get('/', function () {
 });
 
 Route::resource('product', ProductController::class);
+Route::get('/product/{product}/levering', [ProductController::class, 'levering'])->name('product.levering');
 
 require __DIR__.'/auth.php';

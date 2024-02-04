@@ -42,6 +42,15 @@ class ProductController extends Controller
         $product->load('productPerAllergeen.allergeen');
         return view('product.show', ['product' => $product]);
     }
+    
+    /**
+     * Display the specified resource with another resource.
+     */
+    public function levering(Product $product)
+    {
+        $product->load('leverancier', 'leveringen');
+        return view('product.levering', ['product' => $product]);
+    }
 
     /**
      * Show the form for editing the specified resource.
