@@ -48,8 +48,8 @@ class ProductController extends Controller
      */
     public function levering(Product $product)
     {
-        $product->load('leverancier', 'leveringen');
-        return view('product.levering', ['product' => $product]);
+        $product->load('productPerLeverancier.leverancier');
+        return view('product.levering', ['products' => $product]);
     }
 
     /**

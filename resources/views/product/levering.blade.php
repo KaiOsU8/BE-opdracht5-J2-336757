@@ -1,32 +1,29 @@
 <x-app-layout>
-<script src="https://kit.fontawesome.com/344423929d.js" crossorigin="anonymous"></script>
-    <div class=" flex justify-center flex-col items-center">
-        <h1 class="text-center text-4xl m-20">Overzicht Magazijn Jamin</h1>
-            <table class="text-center flex justify-center">
-                <tr class="text-xl">
-                    <th class="border-solid border-2 border-sky-400">Barcode</th>
-                    <th class="border-solid border-2 border-sky-400">Naam</th>
-                    <th class="border-solid border-2 border-sky-400">VerpakkingsEenheid</th>
-                    <th class="border-solid border-2 border-sky-400">AantalAanwezig</th>
-                    <th class="border-solid border-2 border-sky-400">AllergenenInfo</th>
-                    <th class="border-solid border-2 border-sky-400">LeveringsInformatie</th>
-                </tr>
+    <div class="flex justify-center flex-col items-center">
+        <h1 class="text-center text-4xl m-20">Leveringsinformatie</h1>
+            @foreach ($products->productPerLeverancier as $productPerLeverancier)
+                <h1 class="text-center text-xl m-5">Leverancier: {{ $productPerLeverancier->leverancier->Naam }}</h1>
+                <h1 class="text-center text-xl m-5">Contactpersoon: {{ $productPerLeverancier->leverancier->ContactPersoon }}</h1>
+                <h1 class="text-center text-xl m-5">Leveranciernummer: {{ $productPerLeverancier->leverancier->LeverancierNummer }}</h1>
+                <h1 class="text-center text-xl m-5">Mobiel: {{ $productPerLeverancier->leverancier->Mobiel }}</h1>
+                @break
+            @endforeach
+        <table class="text-center flex justify-center">
+            <tr class="text-xl">
+                <th class="border-solid border-2 border-sky-400">Naam product</th>
+                <th class="border-solid border-2 border-sky-400">Datum Laatste levering</th>
+                <th class="border-solid border-2 border-sky-400">Aantal</th>
+                <th class="border-solid border-2 border-sky-400">Eerstvolgende levering</th>
+            </tr>
                 @foreach ($products as $product)
-                    @foreach ($product->magazijn as $magazijn)
-                        <tr>
-                            <td class="border-solid border-2 border-sky-400">{{ $product->Barcode }}</td>
-                            <td class="border-solid border-2 border-sky-400">{{ $product->Naam }}</td>
-                            <td class="border-solid border-2 border-sky-400">{{ $magazijn->VerpakkingsEenheid }}</td>
-                            <td class="border-solid border-2 border-sky-400">{{ $magazijn->AantalAanwezig }}</td>
-                            <td class="border-solid border-2 border-sky-400">
-                                <a href="{{ route('product.show', $product) }}"><i class="fa-solid fa-x text-red-600"></i></a>
-                            </td>
-                            <td class="border-solid border-2 border-sky-400">
-                                <a href="{{ route('product.levering', $product) }}"><i class="fa-solid text-blue-500 fa-question"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td class="border-solid border-2 border-sky-400">{{ $product->Naam }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $product->DatumLevering }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $product->Aantal }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $product->DatumEerstVolgendeLevering }}</td>
+                    </tr>
                 @endforeach
-            </table>
+        </table>
+        <a href="{{ route('product.index') }}" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terug naar Producten</a>
     </div>
 </x-app-layout>
