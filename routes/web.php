@@ -20,6 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::resource('product', ProductController::class);
+
 require __DIR__.'/auth.php';
