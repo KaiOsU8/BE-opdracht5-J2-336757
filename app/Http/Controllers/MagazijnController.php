@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Magazijn;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MagazijnController extends Controller
@@ -12,7 +13,11 @@ class MagazijnController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['magazijn' => function ($query) {
+            $query->select('ProductId', 'VerpakkingsEenheid', 'AantalAanwezig');
+        }])->get(['id', 'Barcode', 'Naam']);
+
+        return view('magazijn.index', ['products' => $products]);
     }
 
     /**
