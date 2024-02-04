@@ -8,6 +8,7 @@
                     <th class="border-solid border-2 border-sky-400">Naam</th>
                     <th class="border-solid border-2 border-sky-400">VerpakkingsEenheid</th>
                     <th class="border-solid border-2 border-sky-400">AantalAanwezig</th>
+                    <th class="border-solid border-2 border-sky-400">AllergenenInfo</th>
                 </tr>
                 @foreach ($products as $product)
                     @foreach ($product->magazijn as $magazijn)
@@ -16,6 +17,9 @@
                             <td class="border-solid border-2 border-sky-400">{{ $product->Naam }}</td>
                             <td class="border-solid border-2 border-sky-400">{{ $magazijn->VerpakkingsEenheid }}</td>
                             <td class="border-solid border-2 border-sky-400">{{ $magazijn->AantalAanwezig }}</td>
+                            <td class="border-solid border-2 border-sky-400">
+                                <a href="{{ route('product.show', $product) }}"><i class="fa-solid fa-x text-red-600"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 @endforeach

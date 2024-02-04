@@ -13,11 +13,7 @@ class MagazijnController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['magazijn' => function ($query) {
-            $query->select('ProductId', 'VerpakkingsEenheid', 'AantalAanwezig');
-        }])->get(['id', 'Barcode', 'Naam']);
-
-        return view('magazijn.index', ['products' => $products]);
+        //
     }
 
     /**

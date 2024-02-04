@@ -12,9 +12,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['magazijn' => function ($query) {
+            $query->select('ProductId', 'VerpakkingsEenheid', 'AantalAanwezig');
+        }])->get(['id', 'Barcode', 'Naam']);
+    
+        return view('product.index', ['products' => $products]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -36,7 +39,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load('productPerAllergeen.allergeen');
+        return view('product.show', ['product' => $product]);
     }
 
     /**

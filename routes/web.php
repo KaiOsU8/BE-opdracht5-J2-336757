@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MagazijnController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,5 @@ Route::get('/', function () {
 });
 
 
-Route::resource('magazijn', MagazijnController::class);
+Route::resource('product', ProductController::class);
 require __DIR__.'/auth.php';
