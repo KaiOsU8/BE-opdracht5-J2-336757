@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex justify-center flex-col items-center">
         <h1 class="text-center text-4xl m-20">Leveringsinformatie</h1>
-            @foreach ($products->productPerLeverancier as $productPerLeverancier)
+            @foreach ($product->productPerLeverancier as $productPerLeverancier)
                 <h1 class="text-center text-xl m-5">Leverancier: {{ $productPerLeverancier->leverancier->Naam }}</h1>
                 <h1 class="text-center text-xl m-5">Contactpersoon: {{ $productPerLeverancier->leverancier->ContactPersoon }}</h1>
                 <h1 class="text-center text-xl m-5">Leveranciernummer: {{ $productPerLeverancier->leverancier->LeverancierNummer }}</h1>
@@ -15,14 +15,16 @@
                 <th class="border-solid border-2 border-sky-400">Aantal</th>
                 <th class="border-solid border-2 border-sky-400">Eerstvolgende levering</th>
             </tr>
-                @foreach ($products as $product)
+            @if($product->leveringen)
+                @foreach ($product->leveringen as $levering)
                     <tr>
                         <td class="border-solid border-2 border-sky-400">{{ $product->Naam }}</td>
-                        <td class="border-solid border-2 border-sky-400">{{ $product->DatumLevering }}</td>
-                        <td class="border-solid border-2 border-sky-400">{{ $product->Aantal }}</td>
-                        <td class="border-solid border-2 border-sky-400">{{ $product->DatumEerstVolgendeLevering }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $levering->DatumLevering }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $levering->Aantal }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $levering->DatumEerstVolgendeLevering }}</td>
                     </tr>
                 @endforeach
+            @endif
         </table>
         <a href="{{ route('product.index') }}" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terug naar Producten</a>
     </div>
