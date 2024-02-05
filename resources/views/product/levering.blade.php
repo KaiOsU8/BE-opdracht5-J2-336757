@@ -15,16 +15,14 @@
                 <th class="border-solid border-2 border-sky-400">Aantal</th>
                 <th class="border-solid border-2 border-sky-400">Eerstvolgende levering</th>
             </tr>
-            @if($product->leveringen)
-                @foreach ($product->leveringen as $levering)
+                @foreach ($product->productPerLeverancier as $levering)
                     <tr>
-                        <td class="border-solid border-2 border-sky-400">{{ $product->Naam }}</td>
+                        <td class="border-solid border-2 border-sky-400">{{ $levering->product->Naam }}</td>
                         <td class="border-solid border-2 border-sky-400">{{ $levering->DatumLevering }}</td>
                         <td class="border-solid border-2 border-sky-400">{{ $levering->Aantal }}</td>
                         <td class="border-solid border-2 border-sky-400">{{ $levering->DatumEerstVolgendeLevering }}</td>
                     </tr>
                 @endforeach
-            @endif
         </table>
         <a href="{{ route('product.index') }}" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terug naar Producten</a>
     </div>

@@ -24,16 +24,14 @@
                 <th class="border-solid border-2 border-sky-400">Aantal</th>
                 <th class="border-solid border-2 border-sky-400">Eerstvolgende levering</th>
             </tr>
-            <?php if($product->leveringen): ?>
-                <?php $__currentLoopData = $product->leveringen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $levering): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $product->productPerLeverancier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $levering): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td class="border-solid border-2 border-sky-400"><?php echo e($product->Naam); ?></td>
+                        <td class="border-solid border-2 border-sky-400"><?php echo e($levering->product->Naam); ?></td>
                         <td class="border-solid border-2 border-sky-400"><?php echo e($levering->DatumLevering); ?></td>
                         <td class="border-solid border-2 border-sky-400"><?php echo e($levering->Aantal); ?></td>
                         <td class="border-solid border-2 border-sky-400"><?php echo e($levering->DatumEerstVolgendeLevering); ?></td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php endif; ?>
         </table>
         <a href="<?php echo e(route('product.index')); ?>" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terug naar Producten</a>
     </div>
