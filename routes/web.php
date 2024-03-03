@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeverancierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\ProductController;
@@ -22,5 +23,6 @@ Route::get('/', function () {
 
 Route::resource('product', ProductController::class);
 Route::get('/product/{product}/levering', [ProductController::class, 'levering'])->name('product.levering');
+Route::resource('leverancier', LeverancierController::class);
 
 require __DIR__.'/auth.php';

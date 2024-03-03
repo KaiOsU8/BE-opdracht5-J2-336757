@@ -16,4 +16,5 @@ class Leverancier extends Model
     {
         return $this->hasMany(ProductPerLeverancier::class, 'LeverancierId', 'id');
     }
+
 }
