@@ -9,6 +9,7 @@
                     <th class="border-solid border-2 border-sky-400">LeverancierNummer</th>
                     <th class="border-solid border-2 border-sky-400">Mobiel</th>
                     <th class="border-solid border-2 border-sky-400">AantalVerschillendeProducten</th>
+                    <th class="border-solid border-2 border-sky-400">ToonProducten</th>
                 </tr> 
                 @foreach ($leveranciers as $leverancier)
                     <tr>
@@ -17,6 +18,9 @@
                         <td class="border-solid border-2 border-sky-400">{{ $leverancier->LeverancierNummer }}</td>
                         <td class="border-solid border-2 border-sky-400">{{ $leverancier->Mobiel }}</td>
                         <td class="border-solid border-2 border-sky-400">{{ $leverancier->productPerLeverancier->count() }}</td>
+                        <td class="border-solid border-2 border-sky-400">
+                            <a href="{{ route('leverancier.show', $leverancier->id) }}"><i class="fas fa-eye"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </table>

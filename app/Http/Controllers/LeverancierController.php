@@ -36,9 +36,11 @@ class LeverancierController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Leverancier $leverancier)
+    public function show($id)
     {
-        //
+        $leverancier = \App\Models\Leverancier::findOrFail($id);
+      
+        return view('leverancier.show', compact('leverancier'));
     }
 
     /**

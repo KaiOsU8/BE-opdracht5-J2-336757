@@ -18,6 +18,7 @@
                     <th class="border-solid border-2 border-sky-400">LeverancierNummer</th>
                     <th class="border-solid border-2 border-sky-400">Mobiel</th>
                     <th class="border-solid border-2 border-sky-400">AantalVerschillendeProducten</th>
+                    <th class="border-solid border-2 border-sky-400">ToonProducten</th>
                 </tr> 
                 <?php $__currentLoopData = $leveranciers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $leverancier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
@@ -26,6 +27,9 @@
                         <td class="border-solid border-2 border-sky-400"><?php echo e($leverancier->LeverancierNummer); ?></td>
                         <td class="border-solid border-2 border-sky-400"><?php echo e($leverancier->Mobiel); ?></td>
                         <td class="border-solid border-2 border-sky-400"><?php echo e($leverancier->productPerLeverancier->count()); ?></td>
+                        <td class="border-solid border-2 border-sky-400">
+                            <a href="<?php echo e(route('leverancier.show', $leverancier->id)); ?>"><i class="fas fa-eye"></i></a>
+                        </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
