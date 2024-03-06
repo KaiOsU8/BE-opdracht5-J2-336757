@@ -12,6 +12,13 @@ class ProductPerLeverancier extends Model
     const UPDATED_AT = 'DatumGewijzigd';
     const CREATED_AT = 'DatumAangemaakt';
 
+    protected $fillable = [
+        'Aantal',
+        'DatumEerstVolgendeLevering',
+        'ProductId',
+        'LeverancierId',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'ProductId', 'id');

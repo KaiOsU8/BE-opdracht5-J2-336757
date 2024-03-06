@@ -27,4 +27,9 @@ class Product extends Model
         return $this->hasMany(ProductPerLeverancier::class, 'ProductId', 'id');
     }
 
+    public function leverancier()
+    {
+        return $this->belongsTo(Leverancier::class);
+    }
+
 }

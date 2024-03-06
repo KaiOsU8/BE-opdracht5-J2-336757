@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\LeverancierController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\MagazijnController;
+use App\Http\Controllers\LeverancierController; 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductPerLeverancierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +23,8 @@ Route::get('/', function () {
 Route::resource('product', ProductController::class);
 Route::get('/product/{product}/levering', [ProductController::class, 'levering'])->name('product.levering');
 Route::resource('leverancier', LeverancierController::class);
+Route::get('/product/{product}/levering/{leverancier}/create', [ProductPerLeverancierController::class, 'create'])->name('leverancier.create');
+Route::post('/product/{product}/levering/{leverancier}', [ProductPerLeverancierController::class, 'store'])->name('leverancier.store');
+
 
 require __DIR__.'/auth.php';

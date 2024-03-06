@@ -13,6 +13,7 @@
                     <th class="border-solid border-2 border-sky-400">AantalInMagazijn</th>
                     <!-- <th class="border-solid border-2 border-sky-400">VerpakkingsEenheid</th> -->
                     <th class="border-solid border-2 border-sky-400">DatumEerstVolgendeLevering</th>
+                    <th class="border-solid border-2 border-sky-400">Nieuwe Levering</th>
                 </tr> 
                 @foreach ($leverancier->productPerLeverancier as $productPerLeverancier)
                     <tr>
@@ -21,6 +22,9 @@
                         <td class="border-solid border-2 border-sky-400">{{ $productPerLeverancier->Aantal }}</td>
                         <!-- <td class="border-solid border-2 border-sky-400">{{ $productPerLeverancier->VerpakkingsEenheid }}</td> -->
                         <td class="border-solid border-2 border-sky-400">{{ $productPerLeverancier->DatumEerstVolgendeLevering }}</td>
+                        <td class="border-solid border-2 border-sky-400 text-xl">
+                            <a href="{{ route('leverancier.create', ['product' => $productPerLeverancier->product->id, 'leverancier' => $productPerLeverancier->leverancier->id]) }}">+</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
