@@ -12,7 +12,7 @@
     <div class="flex justify-center flex-col items-center">
         <h1 class="text-center text-4xl m-5">Create Delivery for <?php echo e($product->Naam); ?></h1>
 
-        <form action="<?php echo e(route('leverancier.store', [$product->id, $leverancier->id])); ?>" method="POST" class="text-center text-xl">
+        <form action="<?php echo e(route('leverancier.store', [$product->id, $leverancier->id, 'id' => $id])); ?>" method="POST" class="text-center text-xl">
             <?php echo csrf_field(); ?>
 
             <div class="form-group m-2">

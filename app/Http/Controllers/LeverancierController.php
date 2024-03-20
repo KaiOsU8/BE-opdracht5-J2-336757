@@ -39,6 +39,8 @@ class LeverancierController extends Controller
     public function show($id)
     {
         $leverancier = \App\Models\Leverancier::findOrFail($id);
+
+        //dd($id, $leverancier);
       
         return view('leverancier.show', compact('leverancier'));
     }

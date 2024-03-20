@@ -20,14 +20,12 @@ class ProductPerLeverancierController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($productId, $leverancierId)
+    public function create(Request $request, $productId, $leverancierId)
     {
         $product = Product::find($productId);
         $leverancier = Product::find($leverancierId);
-
-
     
-        return view('leverancier.create', ['product' => $product, 'leverancier' => $leverancier]);
+        return view('leverancier.create', ['product' => $product, 'leverancier' => $leverancier, 'id' => $request->all()['id']]);
     }
 
     /**
@@ -35,22 +33,28 @@ class ProductPerLeverancierController extends Controller
      */
     public function store(Request $request, $productId, $leverancierId)
     {
-        $request->validate([
+        $ProductPerLeverancierId = $request->all()['id'];
+
+        $requestValidation = $request->validate([
             'Aantal' => 'required|integer',
-            'DatumEerstVolgendeLevering' => 'required|date',
-            'LeverancierId' => 'required|integer',
+            'DatumEerstVolgendeLevering' => 'required|date'
         ]);
     
         $product = \App\Models\Product::find($productId);
+        $productPerLeverancier = \App\Models\ProductPerLeverancier::find($ProductPerLeverancierId);
+
+        
+
+         //dd($product->productPerLeverancier()->get(['DatumLevering']));
+        
     
         if ($product === null) {
             return redirect()->back()->withErrors('Product not found');
         }
-    
-        $product->productPerLeverancier()->create([
-            'Aantal' => $request->Aantal,
-            'DatumEerstVolgendeLevering' => $request->DatumEerstVolgendeLevering,
-            'LeverancierId' => $request->input('LeverancierId'),
+
+        $productPerLeverancier->update([
+            'Aantal' => $requestValidation['Aantal'],
+            'DatumEerstVolgendeLevering' => $requestValidation['DatumEerstVolgendeLevering']
         ]);
     
         return redirect()->route('leverancier.show', $leverancierId);

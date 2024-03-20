@@ -13,8 +13,10 @@ class ProductPerLeverancier extends Model
     const CREATED_AT = 'DatumAangemaakt';
 
     protected $fillable = [
+        'id',
         'Aantal',
         'DatumEerstVolgendeLevering',
+        'DatumLevering',
         'ProductId',
         'LeverancierId',
     ];
