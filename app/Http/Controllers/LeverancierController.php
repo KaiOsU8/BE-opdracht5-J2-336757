@@ -11,11 +11,18 @@ class LeverancierController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $leveranciers = \App\Models\Leverancier::with('productPerLeverancier')->get();
+    {
+        $leveranciers = \App\Models\Leverancier::with('productPerLeverancier')->get();
 
-    return view('leverancier.index', compact('leveranciers'));
-}
+        return view('leverancier.index', compact('leveranciers'));
+    }
+
+    public function leverancier()
+    {
+        $leveranciers = \App\Models\Leverancier::with('productPerLeverancier')->get();
+
+        return view('leverancier.overzicht', compact('leveranciers'));
+    }
 
     /**
      * Show the form for creating a new resource.

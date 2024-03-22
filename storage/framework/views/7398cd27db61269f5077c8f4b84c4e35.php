@@ -10,7 +10,7 @@
 <?php $component->withAttributes([]); ?>
 <script src="https://kit.fontawesome.com/344423929d.js" crossorigin="anonymous"></script>
     <div class=" flex justify-center flex-col items-center">
-        <h1 class="text-center text-4xl m-20">Overzicht Magazijn Jamin</h1>
+        <h1 class="text-center text-4xl m-20">Overzicht leveranciers</h1>
             <table class="text-center flex justify-center">
                 <tr class="text-xl">
                     <th class="border-solid border-2 border-sky-400">Naam</th>

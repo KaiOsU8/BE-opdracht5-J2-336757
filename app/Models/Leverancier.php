@@ -17,4 +17,9 @@ class Leverancier extends Model
         return $this->hasMany(ProductPerLeverancier::class, 'LeverancierId', 'id');
     }
 
+    public function contact()
+    {
+        return $this->hasOne(Contact::class, 'id', 'ContactId');
+    }
+
 }

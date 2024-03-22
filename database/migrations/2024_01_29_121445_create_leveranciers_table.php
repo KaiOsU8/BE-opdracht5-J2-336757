@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('ContactPersoon');
             $table->string('LeverancierNummer');
             $table->string('Mobiel');
+            $table->unsignedBigInteger('ContactId');
+            $table->foreign('ContactId')->references('id')->on('contacts');
             $table->boolean('IsActief')->default(true);
             $table->string('Opmerking')->nullable();
             $table->timestamp('DatumAangemaakt', 0)->nullable();
