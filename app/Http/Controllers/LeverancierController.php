@@ -10,6 +10,7 @@ class LeverancierController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $leveranciers = \App\Models\Leverancier::with('productPerLeverancier')->get();
@@ -22,6 +23,13 @@ class LeverancierController extends Controller
         $leveranciers = \App\Models\Leverancier::with('productPerLeverancier')->get();
 
         return view('leverancier.overzicht', compact('leveranciers'));
+    }
+
+    public function leveranciershow($id)
+    {
+        $leverancier = \App\Models\Leverancier::findOrFail($id);
+
+        return view('leverancier.overzichtshow', compact('leverancier'));
     }
 
     /**
@@ -47,8 +55,6 @@ class LeverancierController extends Controller
     {
         $leverancier = \App\Models\Leverancier::findOrFail($id);
 
-        //dd($id, $leverancier);
-      
         return view('leverancier.show', compact('leverancier'));
     }
 
@@ -57,7 +63,7 @@ class LeverancierController extends Controller
      */
     public function edit(Leverancier $leverancier)
     {
-        //
+        return view('leverancier.edit', compact('leverancier'));
     }
 
     /**
@@ -65,7 +71,10 @@ class LeverancierController extends Controller
      */
     public function update(Request $request, Leverancier $leverancier)
     {
-        //
+        $leverancier->update($request->only('Naam', 'ContactPersoon', 'LeverancierNummer', 'Mobiel'));
+        $leverancier->contact->update($request->only('Straat', 'Huisnummer', 'Postcode', 'Stad'));
+        
+        return redirect()->route('leverancier.overzichtshow', $leverancier);
     }
 
     /**

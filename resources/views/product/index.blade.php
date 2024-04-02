@@ -28,5 +28,6 @@
                     @endforeach
                 @endforeach
             </table>
-    </div>
+            <a href="{{ route('home') }}" class="mt-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">home</a>
+        </div>
 </x-app-layout>

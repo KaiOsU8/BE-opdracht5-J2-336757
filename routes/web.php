@@ -22,14 +22,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
+
 Route::resource('product', ProductController::class);
 Route::get('/product/{product}/levering', [ProductController::class, 'levering'])->name('product.levering');
-Route::resource('leverancier', LeverancierController::class);
 
 Route::get('/leverancier/overzicht', [LeverancierController::class, 'leverancier'])->name('leverancier.overzicht');
+Route::get('/leverancier/overzicht/{leverancier}', [LeverancierController::class, 'leveranciershow'])->name('leverancier.overzichtshow');
+
+Route::get('/leverancier/overzicht/{leverancier}/edit', [LeverancierController::class, 'edit'])->name('leverancier.edit');
+Route::put('/leverancier/overzicht/{leverancier}', [LeverancierController::class, 'update'])->name('leverancier.update');
+Route::resource('leverancier', LeverancierController::class);
 
 Route::get('/product/{product}/levering/{leverancier}/create', [ProductPerLeverancierController::class, 'create'])->name('leverancier.create');
 Route::post('/product/{product}/levering/{leverancier}', [ProductPerLeverancierController::class, 'store'])->name('leverancier.store');
+
 Route::resource('contact', ContactController::class);
 
 require __DIR__.'/auth.php';

@@ -10,7 +10,10 @@
 <?php $component->withAttributes([]); ?>
 <script src="https://kit.fontawesome.com/344423929d.js" crossorigin="anonymous"></script>
     <div class=" flex justify-center flex-col items-center">
-        <h1 class="text-center text-4xl m-20">Overzicht leveranciers</h1>
+        <h1 class="text-center text-4xl mt-20 mb-10">Overzicht leveranciers</h1>
+        <ul class="divide-y mb-10">
+            <a href="<?php echo e(route('leverancier.overzicht')); ?>" class="underline text-xl">Leverancier Details</a>
+        </ul>
             <table class="text-center flex justify-center">
                 <tr class="text-xl">
                     <th class="border-solid border-2 border-sky-400">Naam</th>
@@ -33,6 +36,7 @@
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
+            <a href="<?php echo e(route('home')); ?>" class="mt-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">home</a>
     </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

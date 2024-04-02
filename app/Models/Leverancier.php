@@ -12,6 +12,9 @@ class Leverancier extends Model
     const UPDATED_AT = 'DatumGewijzigd';
     const CREATED_AT = 'DatumAangemaakt';
 
+    protected $fillable = ['Naam', 'ContactPersoon', 'LeverancierNummer', 'Mobiel',];
+
+
     public function productPerLeverancier()
     {
         return $this->hasMany(ProductPerLeverancier::class, 'LeverancierId', 'id');

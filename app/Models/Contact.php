@@ -11,6 +11,8 @@ class Contact extends Model
 
     const UPDATED_AT = 'DatumGewijzigd';
     const CREATED_AT = 'DatumAangemaakt';
+
+    protected $fillable = ['Straat', 'Huisnummer', 'Postcode', 'Stad'];
     
     public function leverancier()
     {
