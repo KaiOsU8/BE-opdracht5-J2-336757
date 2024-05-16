@@ -24,7 +24,7 @@
                 <th class="border-solid border-2 border-sky-400">DatumEerstVolgendeLevering</th>
                 <th class="border-solid border-2 border-sky-400">Nieuwe Levering</th>
             </tr>
-            <?php $__currentLoopData = $leverancier->productPerLeverancier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productPerLeverancier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $x; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productPerLeverancier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td class="border-solid border-2 border-sky-400"><?php echo e($productPerLeverancier->product->Naam); ?></td>
                 <td class="border-solid border-2 border-sky-400"><?php echo e($productPerLeverancier->DatumLevering); ?></td>

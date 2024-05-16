@@ -53,9 +53,11 @@ class LeverancierController extends Controller
      */
     public function show($id)
     {
-        $leverancier = \App\Models\Leverancier::findOrFail($id);
 
-        return view('leverancier.show', compact('leverancier'));
+        $leverancier = \App\Models\Leverancier::with('productPerLeverancier')->find($id);
+        $x = $leverancier->productPerLeverancier->sortByDesc('Aantal');
+
+        return view('leverancier.show', compact('leverancier', 'x'));
     }
 
     /**

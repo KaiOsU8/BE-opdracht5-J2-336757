@@ -15,7 +15,7 @@
                 <th class="border-solid border-2 border-sky-400">DatumEerstVolgendeLevering</th>
                 <th class="border-solid border-2 border-sky-400">Nieuwe Levering</th>
             </tr>
-            @foreach ($leverancier->productPerLeverancier as $productPerLeverancier)
+            @foreach ($x as $productPerLeverancier)
             <tr>
                 <td class="border-solid border-2 border-sky-400">{{ $productPerLeverancier->product->Naam }}</td>
                 <td class="border-solid border-2 border-sky-400">{{ $productPerLeverancier->DatumLevering }}</td>
